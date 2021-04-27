@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:mausam/screens/weather_view.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(Mausam());
 
-class MyApp extends StatelessWidget {
+class Mausam extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Mausam',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Scaffold(),
+      theme: ThemeData.dark(),
+      home: WeatherView(),
     );
   }
 }
