@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mausam/screens/loading_screen.dart';
+import 'package:mausam/screens/weather_view.dart';
+
+import 'screens/weather_view.dart';
 
 void main() => runApp(Mausam());
 
@@ -8,7 +10,7 @@ class Mausam extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.dark(),
-      home: LoadingScreen(),
+      home: WeatherView(),
     );
   }
 }
