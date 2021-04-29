@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mausam/components/reusable_card.dart';
+import 'package:mausam/components/card_content.dart';
+import 'package:mausam/utilities/constants.dart';
 
 class WeatherView extends StatefulWidget {
   @override
@@ -11,6 +14,7 @@ class _WeatherViewState extends State<WeatherView> {
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: Container(
+        padding: EdgeInsets.all(20.0),
         decoration: BoxDecoration(
           gradient: LinearGradient(
               begin: Alignment.topCenter,
@@ -19,37 +23,87 @@ class _WeatherViewState extends State<WeatherView> {
         ),
         child: SafeArea(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              SizedBox(
-                height: 20.0,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Icon(Icons.my_location_rounded),
+                  Icon(Icons.location_city_rounded)
+                ],
+              ),
+              SizedBox(height: 40.0),
+              Text(
+                'New York City, USA',
+                style: kPlaceTextStyle,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.baseline,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 textBaseline: TextBaseline.alphabetic,
                 children: [
                   Text(
                     '19.2°C',
-                    style: TextStyle(fontSize: 70.0),
+                    style: kTempTextStyle,
                   ),
-                  Icon(
-                    Icons.wb_sunny_rounded,
-                    size: 150.0,
-                    color: Colors.yellow,
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 25.0),
+                    child: Icon(
+                      Icons.wb_sunny_rounded,
+                      size: 150.0,
+                      color: Colors.yellow,
+                    ),
                   ),
                 ],
               ),
-              Container(
-                child: Text('Some Random Text'),
-                margin: EdgeInsets.all(15.0),
-                height: 50.0,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10.0),
-                  color: Color(0xAF152C39),
+              SizedBox(height: 50.0),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  ReusableCard(
+                    width: 200.0,
+                    height: 260.0,
+                    cardChild: CardContent(
+                      title: 'Feels like',
+                      icon: Icons.thermostat_rounded,
+                      value: '18 F',
+                    ),
+                  ),
+                  ReusableCard(
+                    width: 200.0,
+                    height: 260.0,
+                    cardChild: CardContent(
+                        title: 'Wind speed',
+                        icon: Icons.all_inclusive_rounded,
+                        value: '26 kmph'),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 25.0,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: ReusableCard(
+                  width: double.infinity,
+                  height: 160.0,
+                  cardChild: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      CardContent(
+                          title: 'Pressure',
+                          icon: Icons.compress,
+                          value: 'Some Text'),
+                      CardContent(
+                        title: 'Humidity',
+                        icon: Icons.water_damage_rounded,
+                        value: 'Some Value',
+                      )
+                    ],
+                  ),
                 ),
-              )
+              ),
             ],
           ),
         ),
