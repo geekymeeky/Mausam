@@ -1,14 +1,56 @@
 import 'package:flutter/material.dart';
 import 'package:mausam/components/reusable_card.dart';
 import 'package:mausam/components/card_content.dart';
+import 'package:mausam/services/weather_model.dart';
 import 'package:mausam/utilities/constants.dart';
 
 class WeatherView extends StatefulWidget {
+  WeatherView({this.locationWeather});
+
+  final locationWeather;
   @override
   _WeatherViewState createState() => _WeatherViewState();
 }
 
 class _WeatherViewState extends State<WeatherView> {
+  WeatherModel weatherModel = WeatherModel();
+  dynamic temperature;
+  dynamic feelsLike;
+  dynamic pressure;
+  dynamic humidity;
+  dynamic windSpeed;
+  dynamic countryName;
+  dynamic cityName;
+  dynamic weatherDescription;
+  IconData weatherIcon;
+  Color weatherIconColor;
+
+  @override
+  void initState() {
+    super.initState();
+    updateUI(widget.locationWeather);
+  }
+
+  void updateUI(dynamic weatherData) {
+    setState(() {
+      if (weatherData == null) {
+        return;
+      } else {
+        temperature = weatherData['main']['temp'];
+        feelsLike = weatherData['main']['feels_like'];
+        pressure = weatherData['main']['pressure'];
+        humidity = weatherData['main']['humidity'];
+        windSpeed = weatherData['wind']['speed'];
+        countryName = weatherData['sys']['country'];
+        cityName = weatherData['name'];
+        weatherDescription = weatherData['weather'][0]['description'];
+        weatherIcon = weatherModel.getWeatherIcon(weatherData);
+        weatherIconColor =
+            weatherModel.getColor(weatherData['weather'][0]['id']);
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +76,7 @@ class _WeatherViewState extends State<WeatherView> {
               ),
               SizedBox(height: 40.0),
               Text(
-                'New York City, USA',
+                '$cityName, $countryName',
                 style: kPlaceTextStyle,
               ),
               Row(
@@ -42,16 +84,25 @@ class _WeatherViewState extends State<WeatherView> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 textBaseline: TextBaseline.alphabetic,
                 children: [
-                  Text(
-                    '19.2°C',
-                    style: kTempTextStyle,
+                  Column(
+                    children: [
+                      Text(
+                        '$temperature°C',
+                        style: kTempTextStyle,
+                      ),
+                      Text(
+                        '$weatherDescription',
+                        style: TextStyle(
+                            fontFamily: 'ComicNeue light', fontSize: 20.0),
+                      )
+                    ],
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 25.0),
                     child: Icon(
-                      Icons.wb_sunny_rounded,
+                      weatherIcon,
                       size: 150.0,
-                      color: Colors.yellow,
+                      color: weatherIconColor,
                     ),
                   ),
                 ],
@@ -66,7 +117,7 @@ class _WeatherViewState extends State<WeatherView> {
                     cardChild: CardContent(
                       title: 'Feels like',
                       icon: Icons.thermostat_rounded,
-                      value: '18 F',
+                      value: '$feelsLike °C',
                     ),
                   ),
                   ReusableCard(
@@ -75,7 +126,7 @@ class _WeatherViewState extends State<WeatherView> {
                     cardChild: CardContent(
                         title: 'Wind speed',
                         icon: Icons.all_inclusive_rounded,
-                        value: '26 kmph'),
+                        value: '$windSpeed kmph'),
                   ),
                 ],
               ),
@@ -94,11 +145,11 @@ class _WeatherViewState extends State<WeatherView> {
                       CardContent(
                           title: 'Pressure',
                           icon: Icons.compress,
-                          value: 'Some Text'),
+                          value: '$pressure mb'),
                       CardContent(
                         title: 'Humidity',
                         icon: Icons.water_damage_rounded,
-                        value: 'Some Value',
+                        value: '$humidity %',
                       )
                     ],
                   ),
