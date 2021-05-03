@@ -19,6 +19,16 @@ class WeatherModel {
   }
 
   IconData getWeatherIcon(dynamic weatherData) {
+    var astroIcon = FontAwesomeIcons.sun;
+    var cloudAstroIcon = FontAwesomeIcons.cloudSun;
+    var now = DateTime.now().hour;
+    if (now >= 17) {
+      astroIcon = FontAwesomeIcons.moon;
+      cloudAstroIcon = FontAwesomeIcons.cloudMoon;
+    } else {
+      astroIcon = FontAwesomeIcons.sun;
+      cloudAstroIcon = FontAwesomeIcons.cloudSun;
+    }
     var id = weatherData['weather'][0]['id'];
     if (id < 300) {
       return FontAwesomeIcons.cloudShowersHeavy;
@@ -30,13 +40,13 @@ class WeatherModel {
       return FontAwesomeIcons.snowflake;
     } else if (id < 800) {
       if (id == 721) {
-        return FontAwesomeIcons.cloudSun;
+        return cloudAstroIcon;
       }
       return FontAwesomeIcons.smog;
     } else if (id == 800) {
-      return FontAwesomeIcons.sun;
+      return astroIcon;
     } else {
-      return FontAwesomeIcons.cloudSun;
+      return cloudAstroIcon;
     }
   }
 
@@ -48,7 +58,7 @@ class WeatherModel {
     } else if (id < 800) {
       return Colors.white;
     } else {
-      return Colors.orangeAccent;
+      return Colors.white;
     }
   }
 }

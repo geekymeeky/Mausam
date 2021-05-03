@@ -14,6 +14,7 @@ class WeatherView extends StatefulWidget {
 
 class _WeatherViewState extends State<WeatherView> {
   WeatherModel weatherModel = WeatherModel();
+  Color gradient;
   dynamic temperature;
   dynamic feelsLike;
   dynamic pressure;
@@ -33,6 +34,12 @@ class _WeatherViewState extends State<WeatherView> {
 
   void updateUI(dynamic weatherData) {
     setState(() {
+      var now = DateTime.now().hour;
+      if (now >= 17) {
+        gradient = Colors.purple;
+      } else {
+        gradient = Colors.blue;
+      }
       if (weatherData == null) {
         return;
       } else {
@@ -61,7 +68,7 @@ class _WeatherViewState extends State<WeatherView> {
           gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              colors: [Colors.blue, Colors.black54]),
+              colors: [gradient, Colors.black54]),
         ),
         child: SafeArea(
           child: Column(
