@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 
-class CityScreen extends StatelessWidget {
+class CityScreen extends StatefulWidget {
+  @override
+  _CityScreenState createState() => _CityScreenState();
+}
+
+class _CityScreenState extends State<CityScreen> {
+  String cityName;
   @override
   Widget build(BuildContext context) {
     Color gradient;
@@ -34,13 +40,24 @@ class CityScreen extends StatelessWidget {
                 hintText: 'Enter a city name',
               ),
               maxLines: 1,
+              onChanged: (value) {
+                cityName = value;
+                print(cityName);
+              },
             ),
             TextButton(
-              child: Text(
-                'Get weather',
-                style: TextStyle(fontSize: 24, color: Colors.black54),
+              onPressed: () {
+                Navigator.pop(context, cityName);
+              },
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.green,
+                shape: CircleBorder(),
+                minimumSize: Size(60.0, 100.0),
               ),
-              onPressed: () {},
+              child: Icon(
+                Icons.check,
+                color: Colors.white,
+              ),
             )
           ],
         ),
@@ -48,3 +65,12 @@ class CityScreen extends StatelessWidget {
     );
   }
 }
+// TextButton(
+// child: Text(
+// 'Get weather',
+// style: TextStyle(fontSize: 24, color: Colors.black54),
+// ),
+// onPressed: () {
+// Navigator.pop(context, cityName);
+// },
+// )

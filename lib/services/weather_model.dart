@@ -18,6 +18,13 @@ class WeatherModel {
     return _weatherData;
   }
 
+  Future<dynamic> getCityWeather(String cityName) async {
+    NetworkHandler networkHelper = NetworkHandler(
+        Uri.parse('$API_URI?q=$cityName&appid=$API_KEY&units=metric'));
+    var _weatherData = await networkHelper.getData();
+    return _weatherData;
+  }
+
   IconData getWeatherIcon(dynamic weatherData) {
     var astroIcon = FontAwesomeIcons.sun;
     var cloudAstroIcon = FontAwesomeIcons.cloudSun;

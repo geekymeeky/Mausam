@@ -90,10 +90,19 @@ class _WeatherViewState extends State<WeatherView> {
           IconButton(
             icon: Icon(Icons.location_city_rounded),
             tooltip: 'City weather',
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return CityScreen();
-              }));
+            onPressed: () async {
+              var typedName = await Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return CityScreen();
+                  },
+                ),
+              );
+              if (typedName != null) {
+                var weatherData = await weatherModel.getCityWeather(typedName);
+                updateUI(weatherData);
+              }
             },
           ),
         ],
