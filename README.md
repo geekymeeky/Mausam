@@ -1,4 +1,8 @@
-# mausam
+<h1 align="center">Mausam</h1><br><br>
+<h2 align="center">Preview ▶</h2>
+<p align="center">
+ <img src="https://user-images.githubusercontent.com/66238394/123553240-adbfe500-d797-11eb-8667-0a9cd0989027.jpg" alt="preview" height="363px" width="181px">
+<p>
 
 A new Flutter application.
 
