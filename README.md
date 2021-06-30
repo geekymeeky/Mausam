@@ -1,7 +1,6 @@
 # Mausam
 <p align="center">
- <img src="https://user-images.githubusercontent.com/66238394/123937342-affe8b00-d9b3-11eb-86b2-b54ab0de920a.png
-" alt="preview" height="100px" width="100px">
+ <img src="https://user-images.githubusercontent.com/66238394/123937342-affe8b00-d9b3-11eb-86b2-b54ab0de920a.png" alt="preview" height="100px" width="100px">
 <p>
 <p>
 Mausam is a cross-platform app developed using flutter. The app has been actively upgrading to provide the best user experience. It gathers data from OpenWeatherMap, via their public API.
