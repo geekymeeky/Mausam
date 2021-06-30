@@ -1,20 +1,16 @@
-<h1 align="center">Mausam</h1><br><br>
-<h2 align="center">Preview ▶</h2>
+# Mausam
+<p align="center">
+ <img src="https://user-images.githubusercontent.com/66238394/123937342-affe8b00-d9b3-11eb-86b2-b54ab0de920a.png
+" alt="preview" height="100px" width="100px">
+<p>
+<p>
+Mausam is a cross-platform app developed using flutter. The app has been actively upgrading to provide the best user experience. It gathers data from OpenWeatherMap, via their public API.
+</p>
+
+## App Preview ▶
 <p align="center">
  <img src="https://user-images.githubusercontent.com/66238394/123553240-adbfe500-d797-11eb-8667-0a9cd0989027.jpg" alt="preview" height="363px" width="181px">
 <p>
 
-A new Flutter application.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Contribution
+If you have any ideas or issues, don't hesitate to make contact via the Issues page. Every contribution is welcome. See [Contributing](https://github.com/geekymeeky/Mausam/blob/main/CONTRIBUTING.md) for further information.
