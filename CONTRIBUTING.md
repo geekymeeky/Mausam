@@ -32,6 +32,9 @@ Create a new branch. Use its name to identify the issue your addressing.
 $ git checkout -b branch_name
 ```
 ## Step 4 : Work on the issue assigned
+- ### Before you start working on the issue:
+  - Get your own free API key from [OpenWeather](https://openweathermap.org/api)
+  - Replace the dummy API key with your own API key in `Mausam/lib/services/weather_model.dart`
 - Work on the issue(s) assigned to you. 
 - Add all the files/folders needed.
 - After you've made changes or made your contribution to the project add changes to the branch you've just created by:
