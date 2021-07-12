@@ -14,7 +14,7 @@ Mausam is a cross-platform app developed using flutter. The app has been activel
 ## Contribution
 If you have any ideas or issues, don't hesitate to make contact via the Issues page. Every contribution is welcome. See [Contributing](https://github.com/geekymeeky/Mausam/blob/main/CONTRIBUTING.md) for further information.
  
-## Contributors
+## ✨ Contributors
  <a href="https://github.com/geekymeeky/Mausam/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=geekymeeky/Mausam" />
 </a>
